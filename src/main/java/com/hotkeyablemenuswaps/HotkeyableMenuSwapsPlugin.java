@@ -1254,21 +1254,6 @@ public class HotkeyableMenuSwapsPlugin extends Plugin implements KeyListener
 
 	private boolean mayNotBeLeftClick(MenuEntry entry)
 	{
-		MenuAction type = entry.getType();
-		if (type.getId() >= PLAYER_FIRST_OPTION.getId() && type.getId() <= PLAYER_EIGHTH_OPTION.getId()) {
-			return true;
-		}
-		if (type == MenuAction.NPC_FOURTH_OPTION || type == MenuAction.NPC_FIFTH_OPTION) {
-			if (entry.getNpc() != null) {
-				String[] actions = entry.getNpc().getTransformedComposition().getActions();
-				if ("Lure".equals(actions[3]) || "Knock-out".equals(actions[4])) {
-					return true;
-				}
-			}
-		}
-		if (type == GAME_OBJECT_FIFTH_OPTION) {
-			return client.getVarbitValue(2176) == 1; // in building mode.
-		}
 		return false;
 	}
 
